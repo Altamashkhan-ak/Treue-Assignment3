@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Length Converter</title>
+	<style type="text/css">
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial;
+		}
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+		form {
+			margin: 0 auto;
+			width: 50%;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px #aaa;
+		}
+		input[type="number"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			border: none;
+			font-size: 16px;
+		}
+		select {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			border: none;
+			font-size: 16px;
+		}
+		button[type="submit"] {
+			width: 100%;
+			padding: 10px;
+			background-color: #333;
+			color: #fff;
+			border-radius: 5px;
+			border: none;
+			font-size: 16px;
+		}
+		div.result {
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: solid #ccc 1px;
+		}
+	</style>
+</head>
+<body>
+<h1>Length Converter</h1>
+<form onsubmit="return false;">
+    <label for="length">Length (in meters):</label>
+    <input type="number" id="length" name="length" placeholder="Enter length in meters" required>
+
+    <label for="unit">Unit:</label>
+    <select id="unit" name="unit">
+        <option value="centimeters">Centimeters</option>
+        <option value="kilometers">Kilometers</option>
+        <option value="millimeters">Millimeters</option>
+    </select>
+
+    <button type="submit" onclick="convert()">Convert</button>
+
+    <div class="result">
+        <p id="converted-length"></p>
+    </div>
+</form>
+
+<script type="text/javascript">
+	function convert() {
+	    var length = document.getElementById("length").value;
+
+	    var unit = document.getElementById("unit").value;
+
+	    if (unit == "centimeters") {
+	        var convertedLength = length * 100 + " cm";
+	    } else if (unit == "kilometers") {
+	        var convertedLength = length / 1000 + " km";
+	    } else if (unit == "millimeters") {
+	        var convertedLength = length * 1000 + " mm";
+	    }
+
+	    document.getElementById("converted-length").innerHTML = convertedLength;
+
+	    return false; // Prevent form submission
+	}
+</script>
+
+</body>
+</html>
